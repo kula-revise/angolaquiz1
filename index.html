@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Stuck | Independent Africa: Angola | Kula Revise</title>
+<title>What You Know Already | Independent Africa: Angola | Kula Revise</title>
 <style>
   /* ============================================================
      KULA SOURCE ENGINE v3: TOKEN CONTRACT
@@ -66,12 +66,12 @@
   }
 
   /* ---- DARK MODE TOKEN RE-POINT ---------------------------------------
-     The skin supplies body.alt values for the thirteen identity variables.
+     The skin supplies body.dark values for the thirteen identity variables.
      Everything derived re-points here, once, for every unit. This is the
      engine-level fix for the three defects logged in MOBILE_FIXES_HANDOVER:
      a skin no longer needs the patch block at all.
      ------------------------------------------------------------------- */
-  body.alt {
+  body.dark {
     --muted:      var(--fade);
     --hair:       rgba(255,255,255,0.14);
     --hair-strong:rgba(255,255,255,0.26);
@@ -89,11 +89,9 @@
     --inset:  rgba(255,255,255,0.05);
   }
   /* Key term chips keep a visible edge once the ground inverts. */
-  body.alt .kt-term { border-color: var(--hair-strong); }
-  body.alt .kt-term summary { color: var(--ink); }
-  body.alt .kt-label { border-top-color: var(--hair-strong); }
-  /* v2 dimmed the options a learner did not pick; at 0.45 they vanish on a dark ground. */
-  body.alt .option.dimmed, body.alt .option-btn.dimmed { opacity: 0.72; }
+  body.dark .kt-term { border-color: var(--hair-strong); }
+  body.dark .kt-term summary { color: var(--ink); }
+  body.dark .kt-label { border-top-color: var(--hair-strong); }
 
   /* ---- MODE TOGGLE. Fixed bottom right, 44px minimum tap target. ---- */
   .mode-toggle {
@@ -144,11 +142,19 @@
   --paper: #F7F8F6;   /* cards */
   --cut:   #EDF0EE;   /* insets, sources, carousels */
   --ink:   #1A2327;   /* body text */
-  --clay:  #5C6B73;   /* stage tags, quiet labels: steel, not terracotta */
-  --fade:  #79858B;   /* muted text, captions */
+  /* Stage tags and quiet labels. Was #5C6B73, which cleared 4.5 on a card but
+     measured 4.43 on the --sand page ground, where the eyebrows actually sit. */
+  --clay:  #55636B;   /* stage tags, quiet labels: steel, not terracotta */
+  /* Muted text: captions, attributions, the question counter, the running tally.
+     The previous value measured 3.04 against the grounds it actually sits on. */
+  --fade:  #5C666E;   /* muted text, captions */
   /* accents: brick red for the argued line, deep teal for the settled one */
   --a1: #9C3D2E;  --a1-rgb: 156,61,46;
   --a2: #24565C;  --a2-rgb: 36,86,92;
+  /* The two hover steps are derived, not identity. Left in the engine block they
+     kept the engine's bottle green against this skin's deep teal. */
+  --ink-deep: #13191C;
+  --a2-deep:  #1A3E42;
   /* type: a transitional serif for the history, mono for anything with a symbol */
   --serif: Georgia, 'Times New Roman', serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -227,32 +233,37 @@ body {
 
 /* Dark mode. The slate ground goes to deep ink and the papers to a cold
    charcoal, so the chamber reads as the same room after hours. */
-body.alt {
+body.dark {
   --sand:  #141A1D;
   --paper: #1D2529;
   --cut:   #232C31;
   --ink:   #E6EBEA;
   --clay:  #93A3AB;
   --fade:  #8B979D;
-  --a1: #D0664F;  --a1-rgb: 208,102,79;
+  /* Was #D0664F: 4.37 on the card and 3.86 on the --cut insets, where the option
+     letters, the rank numbers and the source attributions sit. */
+  --a1: #E0836E;  --a1-rgb: 224,131,110;
   --a2: #58A6A2;  --a2-rgb: 88,166,162;
+  /* On a dark ground a hover step goes lighter, not deeper. */
+  --ink-deep: #FFFFFF;
+  --a2-deep:  #7CBFBB;
 }
-body.alt { background-image:
+body.dark { background-image:
   repeating-linear-gradient(90deg, transparent 0 38px, rgba(230,235,234,0.035) 38px 39px) !important; }
-body.alt .card, body.alt .source, body.alt .stat-wrap,
-body.alt .carousel, body.alt .kt { border-color: rgba(88,166,162,0.28) !important; }
-body.alt .btn-begin { border-color: var(--ink) !important; color: var(--ink) !important; }
-body.alt .btn-begin:hover { background: var(--ink) !important; color: var(--sand) !important; }
-body.alt .mode-toggle { background: var(--paper); border-color: rgba(230,235,234,0.24); }
+body.dark .card, body.dark .source, body.dark .stat-wrap,
+body.dark .carousel, body.dark .kt { border-color: rgba(88,166,162,0.28) !important; }
+body.dark .btn-begin { border-color: var(--ink) !important; color: var(--ink) !important; }
+body.dark .btn-begin:hover { background: var(--ink) !important; color: var(--sand) !important; }
+body.dark .mode-toggle { background: var(--paper); border-color: rgba(230,235,234,0.24); }
 
 /* The RECALL chip keeps its light background in dark mode, so it glares.
    Tier chips get dark-mode grounds of their own. */
-body.alt .chip { background: rgba(88,166,162,0.16) !important; color: #BFE0DD !important; }
-body.alt .chip-recall,  body.alt .chip-extract   { background: rgba(208,102,79,0.20) !important; color: #F0BAAB !important; }
-body.alt .chip-understand, body.alt .chip-interpret { background: rgba(88,166,162,0.18) !important; color: #B7DEDA !important; }
-body.alt .chip-apply,   body.alt .chip-evaluate  { background: rgba(230,235,234,0.16) !important; color: #E6EBEA !important; }
+body.dark .chip { background: rgba(88,166,162,0.16) !important; color: #BFE0DD !important; }
+body.dark .chip-recall,  body.dark .chip-extract   { background: rgba(208,102,79,0.20) !important; color: #F0BAAB !important; }
+body.dark .chip-understand, body.dark .chip-interpret { background: rgba(88,166,162,0.18) !important; color: #B7DEDA !important; }
+body.dark .chip-apply,   body.dark .chip-evaluate  { background: rgba(230,235,234,0.16) !important; color: #E6EBEA !important; }
 /* Options need a visible edge against the charcoal card. */
-body.alt .option-btn, body.alt .opt-btn { border-color: rgba(230,235,234,0.20) !important; }
+body.dark .option-btn, body.dark .opt-btn { border-color: rgba(230,235,234,0.20) !important; }
 
 
 /* ---- DARK MODE STATE COLOURS -----------------------------------------------
@@ -260,68 +271,66 @@ body.alt .option-btn, body.alt .opt-btn { border-color: rgba(230,235,234,0.20) !
    Left alone they produce pale text on pale grounds. */
 
 /* Answer states: dark grounds with a coloured edge, text stays --ink. */
-body.alt .option-btn.correct {
+body.dark .option-btn.correct {
   background: rgba(88,166,162,0.16) !important;
   border-color: #58A6A2 !important;
   color: var(--ink) !important;
 }
-body.alt .option-btn.wrong {
+body.dark .option-btn.wrong {
   background: rgba(208,102,79,0.16) !important;
   border-color: #D0664F !important;
   color: var(--ink) !important;
 }
-body.alt .option-btn.correct .opt-text,
-body.alt .option-btn.wrong   .opt-text { color: var(--ink) !important; }
-body.alt .option-btn.correct .opt-letter { color: #7FC7C2 !important; }
-body.alt .option-btn.wrong   .opt-letter { color: #E89A87 !important; }
-body.alt .opt-mark { color: var(--ink) !important; }
+body.dark .option-btn.correct .opt-text,
+body.dark .option-btn.wrong   .opt-text { color: var(--ink) !important; }
+body.dark .option-btn.correct .opt-letter { color: #7FC7C2 !important; }
+body.dark .option-btn.wrong   .opt-letter { color: #E89A87 !important; }
+body.dark .opt-mark { color: var(--ink) !important; }
 /* v2 dims the options a learner did not pick; at 0.45 on a dark ground they vanish. */
-body.alt .option-btn.dimmed { opacity: 0.72 !important; }
 
 /* The full-check button is dark-on-dark once the ground inverts. */
-body.alt .primary-btn {
+body.dark .primary-btn {
   background: var(--cut) !important;
   border: 1px solid rgba(88,166,162,0.40) !important;
   color: var(--ink) !important;
 }
-body.alt .primary-btn:hover { background: #2B363C !important; }
-body.alt .primary-btn .btn-title { color: var(--ink) !important; }
-body.alt .primary-btn .btn-sub,
-body.alt .primary-btn .btn-arrow { color: var(--clay) !important; }
+body.dark .primary-btn:hover { background: #2B363C !important; }
+body.dark .primary-btn .btn-title { color: var(--ink) !important; }
+body.dark .primary-btn .btn-sub,
+body.dark .primary-btn .btn-arrow { color: var(--clay) !important; }
 
 /* Section rows and the small action button. */
-body.alt .section-btn { border-color: rgba(230,235,234,0.18) !important; color: var(--ink) !important; }
-body.alt .section-btn:hover { background: var(--cut) !important; border-color: var(--a2) !important; }
-body.alt .primary-btn-small { background: var(--a2) !important; color: #0E1518 !important; }
-body.alt .primary-btn-small:hover:not(:disabled) { background: #6FBCB7 !important; }
-body.alt .secondary-btn { border-color: rgba(230,235,234,0.30) !important; color: var(--ink) !important; }
-body.alt .secondary-btn:hover:not(:disabled) { background: var(--cut) !important; }
+body.dark .section-btn { border-color: rgba(230,235,234,0.18) !important; color: var(--ink) !important; }
+body.dark .section-btn:hover { background: var(--cut) !important; border-color: var(--a2) !important; }
+body.dark .primary-btn-small { background: var(--a2) !important; color: #0E1518 !important; }
+body.dark .primary-btn-small:hover:not(:disabled) { background: #6FBCB7 !important; }
+body.dark .secondary-btn { border-color: rgba(230,235,234,0.30) !important; color: var(--ink) !important; }
+body.dark .secondary-btn:hover:not(:disabled) { background: var(--cut) !important; }
 
 /* The explanation panel and the quiz footer links. */
-body.alt .explanation { background: var(--cut) !important; border-color: rgba(88,166,162,0.28) !important; }
-body.alt .expl-text { color: var(--ink) !important; }
-body.alt .quiz-foot a, body.alt .quiz-foot { color: var(--clay) !important; }
+body.dark .explanation { background: var(--cut) !important; border-color: rgba(88,166,162,0.28) !important; }
+body.dark .expl-text { color: var(--ink) !important; }
+body.dark .quiz-foot a, body.dark .quiz-foot { color: var(--clay) !important; }
 
 
 /* The lesson engine uses .option where the quiz uses .option-btn, so the
    state overrides have to name both or half the product stays broken. */
-body.alt .option { background: var(--cut) !important; border-color: rgba(230,235,234,0.18) !important; color: var(--ink) !important; }
-body.alt .option.selected { background: rgba(208,102,79,0.14) !important; border-color: #D0664F !important; }
-body.alt .option.correct {
+body.dark .option { background: var(--cut) !important; border-color: rgba(230,235,234,0.18) !important; color: var(--ink) !important; }
+body.dark .option.selected { background: rgba(208,102,79,0.14) !important; border-color: #D0664F !important; }
+body.dark .option.correct {
   background: rgba(88,166,162,0.16) !important;
   border-color: #58A6A2 !important;
   color: var(--ink) !important;
 }
-body.alt .option.wrong {
+body.dark .option.wrong {
   background: rgba(208,102,79,0.16) !important;
   border-color: #D0664F !important;
   color: var(--ink) !important;
 }
-body.alt .option.correct .opt-text,
-body.alt .option.wrong   .opt-text { color: var(--ink) !important; }
-body.alt .option.correct .opt-letter { color: #7FC7C2 !important; }
-body.alt .option.wrong   .opt-letter { color: #E89A87 !important; }
-body.alt .option.dimmed { opacity: 0.72 !important; }
+body.dark .option.correct .opt-text,
+body.dark .option.wrong   .opt-text { color: var(--ink) !important; }
+body.dark .option.correct .opt-letter { color: #7FC7C2 !important; }
+body.dark .option.wrong   .opt-letter { color: #E89A87 !important; }
 
 
 /* The toggle is fixed bottom right and lands on the Continue button on a short
@@ -344,10 +353,10 @@ body { padding-bottom: 4.5rem !important; }
   padding-top: 0.6rem;
 }
 .figure img { border: 1px solid rgba(36,86,92,0.30) !important; }
-body.alt .figure img { border-color: rgba(88,166,162,0.30) !important; }
-body.alt .figure figcaption { border-top-color: rgba(88,166,162,0.24); }
+body.dark .figure img { border-color: rgba(88,166,162,0.30) !important; }
+body.dark .figure figcaption { border-top-color: rgba(88,166,162,0.24); }
 /* An archival photograph should not glare against the dark ground. */
-body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
+body.dark .figure img { filter: brightness(0.9) contrast(1.02); }
 
 
 
@@ -397,8 +406,10 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
   .btn-num { font-family: var(--sans); font-size: 1.4rem; color: var(--a1); font-weight: 800; min-width: 35px; }
   .btn-txt { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
   .btn-title { font-family: var(--sans); font-size: 1.15rem; font-weight: 700; }
-  .btn-sub { font-family: var(--sans); font-size: 0.82rem; color: var(--muted); }
-  .btn-arrow { font-size: 1.3rem; color: var(--a1); }
+  /* These sit inside .primary-btn, whose light ground is --ink, so they take
+     --on-ink. On --muted and --a1 they were paper colours on near-black. */
+  .btn-sub { font-family: var(--sans); font-size: 0.82rem; color: var(--on-ink); opacity: 0.92; }
+  .btn-arrow { font-size: 1.3rem; color: var(--on-ink); }
   .section-list { display: flex; flex-direction: column; gap: 0.5rem; }
   .section-btn { display: flex; align-items: center; gap: 1rem; padding: 0.95rem 1.1rem; background: transparent; border: 1px solid var(--hair-strong); cursor: pointer; font-family: inherit; text-align: left; transition: all 0.2s; color: var(--ink); }
   .section-btn:hover { background: var(--paper); border-color: var(--a1); }
@@ -423,8 +434,10 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
   .option-btn.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option-btn.correct { background: var(--ok-bg); border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option-btn.wrong { background: var(--no-bg); border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option-btn.dimmed { opacity: 0.48; }
-  body.alt .option-btn.dimmed { opacity: 0.72; }
+  /* The dimmed state fell below readable contrast at 360px. One rule per mode,
+     and nothing later in the file competes with it. */
+  .option.dimmed, .option-btn.dimmed { opacity: 0.82; }
+  body.dark .option.dimmed, body.dark .option-btn.dimmed { opacity: 0.86; }
   .opt-letter { font-weight: 800; color: var(--a1); min-width: 1.1rem; }
   .opt-text { flex: 1; }
   .opt-mark { font-weight: 700; font-size: 1.1rem; }
@@ -471,16 +484,6 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
   .hidden { display: none !important; }
 
 
-  /* v2.1 finish pop-up, matched to the lesson engine so a learner meets the
-     same closing screen in all seven files of a unit. */
-  .pop-back { position: fixed; inset: 0; background: var(--scrim); display: flex;
-    align-items: center; justify-content: center; padding: 1.2rem; z-index: 90; }
-  .pop { background: var(--paper); border: 1px solid var(--hair); max-width: 26rem;
-    width: 100%; padding: 1.4rem 1.3rem; text-align: center; }
-  .pop-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.15em;
-    text-transform: uppercase; font-weight: 700; color: var(--a1); }
-  .pop-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin: 0.5rem 0 1.1rem; }
-  .pop-btn { font-family: var(--sans); font-size: 0.78rem; font-weight: 700;
     letter-spacing: 0.09em; text-transform: uppercase; min-height: 44px; padding: 0.6rem 1.4rem;
     cursor: pointer; background: transparent; color: var(--muted);
     border: 1px solid var(--hair); border-radius: 0; }
@@ -495,8 +498,8 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
   <div id="menu-screen">
     <div class="header-block">
       <div class="eyebrow">Kula Revise &middot; Grade 12 History &middot; Angola</div>
-      <h1 class="masthead">What Stuck</h1>
-      <div class="sub" id="masthead-sub">After Lesson 5</div>
+      <h1 class="masthead">What You Know Already</h1>
+      <div class="sub" id="masthead-sub">Before Lesson 1</div>
       <div class="rule"></div>
     </div>
     <div class="intro-box">
@@ -517,7 +520,7 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
       </button>
       <div class="section-list" id="section-list"></div>
     </div>
-    <div class="footer">About 12 minutes for the full set. Have your score from the first check ready.</div>
+    <div class="footer">About 12 minutes for the full set. Write your score down at the end.</div>
   </div>
 
   <!-- QUIZ -->
@@ -545,7 +548,7 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
   <!-- REVIEW -->
   <div id="review-screen" class="hidden">
     <div class="header-block">
-      <div class="eyebrow">After the lessons</div>
+      <div class="eyebrow">Before the lessons</div>
       <h1 class="masthead" style="font-size: clamp(1.9rem,5vw,2.8rem);">Where You Stand</h1>
       <div class="rule"></div>
     </div>
@@ -559,23 +562,40 @@ body.alt .figure img { filter: brightness(0.9) contrast(1.02); }
     <div class="breakdown"><div class="breakdown-label">By tier</div><div id="level-rows"></div></div>
     <div class="breakdown"><div class="breakdown-label">By section</div><div id="breakdown-rows"></div></div>
     <div><div class="review-all-label">Every question</div><div id="review-cards"></div></div>
+    <p class="grade-desc hidden" id="closing-line"></p>
     <div class="review-actions">
       <button class="primary-btn" id="restart-btn"><span class="btn-txt"><span class="btn-title">Return to menu</span><span class="btn-sub">Try another section or retake the full test</span></span><span class="btn-arrow">&#8635;</span></button>
-      <button class="primary-btn" id="finish-btn"><span class="btn-txt"><span class="btn-title">Finish</span><span class="btn-sub">Then tap Done to finish</span></span><span class="btn-arrow">&rarr;</span></button>
+      <button class="primary-btn" id="finish-btn"><span class="btn-txt"><span class="btn-title">Continue to Lesson 1</span><span class="btn-sub">Portugal Holds On</span></span><span class="btn-arrow">&rarr;</span></button>
     </div>
   </div>
 </div>
 
 <script>
+/* ---- LMS EMBED EVENTS ----------------------------------------------------
+   Two moments, deliberately separate. Reaching the closing screen marks the
+   activity done for progress tracking. Choosing to leave it advances. Firing
+   advance on arrival would pull the learner off their own results screen
+   before they had read it. ------------------------------------------------ */
+var KulaLMS = (function(){
+  var done = false;
+  function send(ev){
+    try{
+      window.parent.postMessage({ type: 'lms-embed-event', version: '1.0',
+        payload: { event: ev } }, '*');
+    }catch(e){}
+  }
+  return {
+    completed: function(){ if(done) return; done = true; send('completed'); },
+    advance:   function(){ send('advance'); }
+  };
+})();
 /* kula: re-entry guard. Every declaration below is function scoped, so a
    viewer that re-runs this script re-initialises instead of throwing a
    redeclaration SyntaxError. */
 (function(){
-const MODE = "b";
-const DONE_LABEL = "Unit complete";
-const DONE_TITLE = "What Stuck";
-const DONE_TEXT  = "Congratulations on completing Independent Africa: Angola. Come back here whenever you need to revise for a test or exam.";
-const INTRO = "The same eighteen facts as the first check, asked from the other direction, so remembering the shape of the earlier questions will not help you. You have done the lessons now. This is about what is still there.";
+const MODE = "a";
+const CLOSING_TEXT = "";
+const INTRO = "This checks recall: the dates, names and policies the Angola questions are built from. Take it before Lesson 1. A low score here is the normal starting point, not a warning, so do not worry about the number. Every question tells you why the answer is right. Write your score down at the end so you can compare it after Lesson 5.";
 const SECTIONS = [
   "Portugal holds on",
   "Alvor and the three movements",
@@ -585,270 +605,270 @@ const SECTIONS = [
 ];
 const QUESTIONS = [
   {
-    "question": "The 1961 uprisings against Portuguese rule broke out in the north and in which city?",
+    "question": "In which year did the uprisings against Portuguese rule begin in Angola?",
     "options": [
-      "Luanda",
-      "Lisbon",
-      "Cabinda",
-      "Benguela"
+      "1961",
+      "1974",
+      "1975",
+      "1957"
     ],
     "correct": 0,
-    "explanation": "Luanda, alongside the north. It's the capital, and it's the city the MPLA holds through 1975, so you'll meet it again. Option {opt2} is the oil enclave, which matters later for a different reason.",
+    "explanation": "The uprisings began in 1961, in Luanda and in the north. That is thirteen years before the coup you might be thinking of. Option {opt1} is that coup, in Portugal, and option {opt2} is independence.",
     "id": 1,
     "slot": 1,
     "section": "Portugal holds on",
     "tier": "Recall"
   },
   {
-    "question": "Which Portuguese leader's government was removed by the army officers in 1974?",
+    "question": "In which month and year did army officers overthrow the government in Portugal?",
     "options": [
-      "Marcelo Caetano",
-      "Antonio Salazar",
-      "Agostinho Neto",
-      "Mario Soares"
+      "April 1974",
+      "April 1975",
+      "November 1975",
+      "January 1975"
     ],
     "correct": 0,
-    "explanation": "Caetano headed the government the officers removed. Salazar's the common slip and some textbooks print it, but he'd had a stroke in 1968 and died in 1970. So writing Salazar into a 1974 answer puts you six years out.",
+    "explanation": "25 April 1974, the day the officers moved. Options {opt2} and {opt3} both happened because of the coup. Neither of them can be the coup itself.",
     "id": 2,
     "slot": 2,
     "section": "Portugal holds on",
     "tier": "Recall"
   },
   {
-    "question": "What did Portugal's refusal to decolonise cost it by the early 1970s?",
+    "question": "Why did Portugal not leave Africa when Britain and France did?",
     "options": [
-      "Almost half its national budget was going on the colonial wars",
-      "It lost its seat at the United Nations over the wars",
-      "Its army refused to serve anywhere in Africa at all",
-      "It was expelled from all its trade agreements in Europe"
+      "It treated the colonies as part of Portugal and tightened control",
+      "It had already agreed to hand Angola over to the United Nations",
+      "It was blocked from leaving by the Organisation of African Unity",
+      "It had no settlers or economic interest left in the territories"
     ],
     "correct": 0,
-    "explanation": "Almost half the national budget by the early 1970s. That's the figure you quote when you're asked why the wars ended. Options {opt1} and {opt2} sound like plausible punishments, but neither happened.",
+    "explanation": "Portugal treated Angola as part of Portugal, not as a possession abroad. So leaving was never on the table. Option {opt3} turns the reason round. Settlers and trade are why Lisbon stayed, not why it left.",
     "id": 3,
     "slot": 3,
     "section": "Portugal holds on",
     "tier": "Understand"
   },
   {
-    "question": "Why did independence for Angola come suddenly rather than through a planned handover?",
+    "question": "What made Portuguese army officers move against their own government in 1974?",
     "options": [
-      "The government that had refused to leave was overthrown at home",
-      "The United Nations set a deadline which Portugal then accepted",
-      "The three movements together defeated the Portuguese army in the field",
-      "Portugal ran out of soldiers and formally surrendered in Luanda"
+      "They wanted the wars ended and saw no way to win",
+      "They wanted the colonial wars widened into Zaire and into Zambia",
+      "They were ordered to act by the parliament in Lisbon",
+      "They were paid to act by the United States government"
     ],
     "correct": 0,
-    "explanation": "The regime that had refused to go was removed at home. Option {opt2} is close to what the movements claimed themselves, and you can see why. But the collapse happened in Lisbon.",
+    "explanation": "They were fighting three wars they could not win, and they wanted them stopped. Option {opt2} gets the direction wrong. The coup removed the government. It did not obey it.",
     "id": 4,
     "slot": 4,
     "section": "Portugal holds on",
     "tier": "Understand"
   },
   {
-    "question": "Which agreement fixed the date on which Angola would become independent?",
+    "question": "Which date did the Alvor Agreement set for Angolan independence?",
     "options": [
-      "The Alvor Agreement",
-      "The Lusaka Accord",
-      "The Bicesse Accords",
-      "The Mombasa Declaration"
+      "11 November 1975",
+      "31 January 1975",
+      "25 April 1974",
+      "1 August 1975"
     ],
     "correct": 0,
-    "explanation": "Alvor, signed January 1975. You'll be asked for two of its aims, so the name is worth holding. Option {opt1} is a real Angolan agreement, but from 1991.",
+    "explanation": "11 November 1975. South Africa timed its advance against that date. Option {opt1} is when the transitional government took office. Alvor set two dates, and you need the right one.",
     "id": 5,
     "slot": 5,
     "section": "Alvor and the three movements",
     "tier": "Recall"
   },
   {
-    "question": "Which movement was led by Jonas Savimbi?",
+    "question": "Agostinho Neto led which of the three Angolan liberation movements?",
     "options": [
-      "UNITA",
       "The MPLA",
+      "UNITA",
       "The FNLA",
-      "The MFA"
+      "SWAPO"
     ],
     "correct": 0,
-    "explanation": "Savimbi led UNITA, backed first by China and later by the United States and South Africa. Holden Roberto led the FNLA, and those two names get swapped more than any other pair here. Tie each leader to whoever armed him and you will keep them apart. Option {opt3} is the Portuguese Armed Forces Movement, which is not an Angolan movement at all.",
+    "explanation": "Neto led the MPLA. He declared the People's Republic in November 1975. Option {opt3} is Namibian, not Angolan. Merge the two struggles and you will unpick a paragraph you had otherwise got right.",
     "id": 6,
     "slot": 6,
     "section": "Alvor and the three movements",
     "tier": "Recall"
   },
   {
-    "question": "Why did Angola reach independence in November 1975 with no elected government?",
+    "question": "What was the transitional government set up by Alvor supposed to do?",
     "options": [
-      "The elections that Alvor promised were never held",
-      "The elections were held but the results were annulled",
-      "Portugal cancelled independence and stayed on past November",
-      "The Organisation of African Unity banned the elections"
+      "Run Angola until elections were held",
+      "Rule Angola for the next ten years",
+      "Divide Angola into three separate states",
+      "Hand power directly to the MPLA"
     ],
     "correct": 0,
-    "explanation": "The elections Alvor promised were never held. That's what turns a decolonisation into a civil war, and it's the sentence you want. Option {opt1} assumes a vote that never took place.",
+    "explanation": "It was meant to run Angola until an election chose a government. Those elections never happened, and that is the part you need. Option {opt2} describes partition, which nobody at Alvor proposed.",
     "id": 7,
     "slot": 7,
     "section": "Alvor and the three movements",
     "tier": "Understand"
   },
   {
-    "question": "What is wrong with this claim? 'The Alvor Agreement collapsed before it was ever signed.'",
+    "question": "What is wrong with this claim? 'Alvor failed because Portugal refused to leave Angola.'",
     "options": [
-      "It was signed in January 1975 and then broke down",
-      "It was signed but only by two of the three movements",
-      "It was never a written agreement, only a spoken one",
-      "It collapsed in 1974, before the coup in Lisbon happened"
+      "Portugal did leave, and on the date agreed",
+      "Portugal left, but two years later than agreed",
+      "Alvor never mentioned a Portuguese withdrawal at all",
+      "Portugal was still governing Angola in the 1980s"
     ],
     "correct": 0,
-    "explanation": "Signed in January 1975, then broke down during the transition. The fighting comes after the signing, not instead of it. Option {opt3} puts the collapse before the coup that made the agreement possible, which you can rule out on the dates alone.",
+    "explanation": "Portugal withdrew on schedule in November 1975. So a Portuguese refusal is not the reason. Alvor collapsed because the three movements would not share power. Option {opt1} keeps the same wrong shape and softens it.",
     "id": 8,
     "slot": 8,
     "section": "Alvor and the three movements",
     "tier": "Apply"
   },
   {
-    "question": "Alongside the United States, which power backed the FNLA?",
+    "question": "Which Angolan movement did the Soviet Union arm and support?",
     "options": [
-      "China",
-      "Cuba",
-      "The Soviet Union",
-      "Portugal"
+      "The MPLA",
+      "UNITA",
+      "The FNLA",
+      "The MFA"
     ],
     "correct": 0,
-    "explanation": "China, alongside the United States. Leave China out and you've made Angola look like a straight superpower duel. Option {opt2} was on the opposite side, backing the MPLA.",
+    "explanation": "The Soviet Union armed the MPLA, and that is how it survived late 1975. Options {opt1} and {opt2} were backed from the other side. Swap them and your account of the war runs backwards.",
     "id": 9,
     "slot": 9,
     "section": "The powers arrive",
     "tier": "Recall"
   },
   {
-    "question": "What had Cuba already sent to Angola in October 1975, before any combat troops?",
+    "question": "When did Cuba send its first regular military unit to Angola?",
     "options": [
-      "Military instructors",
-      "Fighter aircraft",
-      "A naval blockade",
-      "Food aid only"
+      "November 1975",
+      "October 1975",
+      "August 1975",
+      "March 1976"
     ],
     "correct": 0,
-    "explanation": "Instructors, in October. They train; a military unit fights. Cuba draws that line carefully, because you'll be asked which arrived first. Option {opt1} came from the Soviet Union, and later.",
+    "explanation": "Early November 1975, after the South African advance. Option {opt1} is when instructors went. Cuba treated sending instructors as a different kind of help from sending a regular unit.",
     "id": 10,
     "slot": 10,
     "section": "The powers arrive",
     "tier": "Recall"
   },
   {
-    "question": "Why was the MPLA's request to Cuba important to how Cuba explained its role?",
+    "question": "On what basis did Cuba deny that it was acting on Soviet orders?",
     "options": [
-      "It let Cuba present itself as invited rather than directed",
-      "It gave Cuba legal ownership of Angola's oil revenue",
-      "It obliged the Soviet Union to send troops as well",
-      "It meant Cuba did not have to send any soldiers"
+      "It said it acted on a request from the MPLA",
+      "It said the Soviet Union had opposed the whole operation",
+      "It said no Cuban soldiers were ever sent to Angola",
+      "It said the United Nations had asked it to intervene"
     ],
     "correct": 0,
-    "explanation": "An invitation lets Cuba present its role as solidarity rather than obedience. Option {opt2} confuses a request for help with a treaty obligation, and you'll want to keep those apart.",
+    "explanation": "Cuba's case was that it answered a request from the MPLA rather than an instruction from Moscow. That is a claim, and you should say whose claim it is. Option {opt2} contradicts the record.",
     "id": 11,
     "slot": 11,
     "section": "The powers arrive",
     "tier": "Understand"
   },
   {
-    "question": "What is wrong with this claim? 'Cuban troops arrived before independence was declared.'",
+    "question": "What is wrong with this claim? 'Cuba entered Angola first and South Africa responded.'",
     "options": [
-      "The first unit was sent days before, and fought after",
-      "Cuban troops only arrived a full year after independence",
-      "Cuba sent no troops until the Soviet Union ordered it",
-      "Independence was declared before the coup happened in Lisbon"
+      "South African forces went in during October, before Cuba's troops",
+      "Both sides entered on exactly the same day in October",
+      "Cuba never sent any forces into Angola at any point",
+      "South Africa did not enter Angola until well after 1980"
     ],
     "correct": 0,
-    "explanation": "The timing's tight rather than obviously wrong, which is what makes it worth a second look from you. The first unit went in the days around 5 November, and the fighting followed independence on the 11th. Option {opt3} is a chronology error big enough to sink a paragraph.",
+    "explanation": "South African forces crossed in October 1975, before the first Cuban combat troops in November. Each side used that order to blame the other, so you want it right. Option {opt3} is wrong by five years.",
     "id": 12,
     "slot": 12,
     "section": "The powers arrive",
     "tier": "Apply"
   },
   {
-    "question": "How long before Angolan independence did South African forces enter the country?",
+    "question": "In which month did South African forces enter Angola in 1975?",
     "options": [
-      "About a month",
-      "About a year",
-      "About a week",
-      "About three years"
+      "October",
+      "December",
+      "November",
+      "February"
     ],
     "correct": 0,
-    "explanation": "About a month. The gap is what tells you the advance was aimed at who'd hold Luanda on the day. Option {opt2} would make the invasion a response to an MPLA government rather than an attempt to prevent one.",
+    "explanation": "October 1975, a month before independence. Option {opt2} is when independence was declared. Put the invasion there and you remove the pressure you are meant to be explaining.",
     "id": 13,
     "slot": 13,
     "section": "South Africa",
     "tier": "Recall"
   },
   {
-    "question": "What did Pretoria believe an MPLA government in Luanda would allow?",
+    "question": "Why did Pretoria want to keep the MPLA out of power in Luanda?",
     "options": [
-      "Bases for fighters operating against its rule",
-      "Free movement of white settlers back to Portugal",
-      "A Soviet naval port on the Angolan coastline",
-      "The immediate independence of Namibia by treaty"
+      "It feared an MPLA government would host SWAPO and ANC fighters",
+      "It wanted Angola's oil fields transferred directly to South African control",
+      "It had promised Portugal that it would restore colonial rule",
+      "It wanted Angola admitted to the United Nations without delay"
     ],
     "correct": 0,
-    "explanation": "Bases: SWAPO fighting for Namibia, and the ANC closer to South Africa itself. Option {opt2} is what Pretoria was trying to prevent, so it answers a question you weren't asked.",
+    "explanation": "Pretoria feared an MPLA government in Luanda would give SWAPO and the ANC bases close to territory it held. That fear is what links Angola to Namibia, and to apartheid at home. Name it in your answer. Option {opt1} sounds plausible, and oil did matter, but it was not the stated reason.",
     "id": 14,
     "slot": 14,
     "section": "South Africa",
     "tier": "Understand"
   },
   {
-    "question": "Why did Pretoria frame its invasion of Angola in Cold War terms?",
+    "question": "What did South Africa hope to gain from Washington by intervening?",
     "options": [
-      "It made an apartheid state look like a Western partner",
-      "It was required to do so by the United Nations Charter",
-      "It had no regional reasons at all for intervening in Angola",
-      "It wanted the Soviet Union to join in the negotiations"
+      "Recognition in Washington as a useful anti-communist ally",
+      "Direct American troops sent to fight in Angola",
+      "American recognition of its own claim to Cabinda",
+      "A formal military alliance signed with the NATO powers"
     ],
     "correct": 0,
-    "explanation": "It let a state isolated over apartheid look like a partner against communism. Option {opt2} is wrong: the regional reasons were real and came first. Pretoria had both, and you can see which one it chose to say out loud.",
+    "explanation": "Recognition as a useful anti-communist ally, and better standing in Washington. It sits alongside the regional reasons rather than replacing them, so give both. Option {opt1} claims more than was ever on offer.",
     "id": 15,
     "slot": 15,
     "section": "South Africa",
     "tier": "Understand"
   },
   {
-    "question": "Which battle is usually treated as the turning point of the war in Angola?",
+    "question": "In which years was the battle of Cuito Cuanavale fought?",
     "options": [
-      "Cuito Cuanavale",
-      "The Luanda siege",
-      "The Benguela landings",
-      "The Cabinda raid"
+      "1987 and 1988",
+      "1975 and 1976",
+      "1980 and 1981",
+      "1990 and 1991"
     ],
     "correct": 0,
-    "explanation": "Cuito Cuanavale. The disagreement over who won it is itself examinable, so you need the name. Option {opt1} isn't an event in the form given here.",
+    "explanation": "1987 and 1988. That is the end of the Cold War phase, not the start. Option {opt1} is the invasion and independence period, twelve years earlier.",
     "id": 16,
     "slot": 16,
     "section": "Cuito Cuanavale and after",
     "tier": "Recall"
   },
   {
-    "question": "What is wrong with this claim? 'The peace accords brought peace inside Angola.'",
+    "question": "What is wrong with this claim? 'Cuito Cuanavale ended the Angolan civil war.'",
     "options": [
-      "Fighting inside Angola carried on for many years afterwards",
-      "The accords were never actually signed by any party",
-      "The accords dealt only with Cuban troops and nothing else",
-      "Namibia remained under South African rule after the accords"
+      "It led to the accords and Namibian independence, not peace inside Angola",
+      "It ended the fighting in Angola within a matter of weeks",
+      "It had no effect on Namibia or the wider region at all",
+      "It was fought some years after Namibia had become fully independent"
     ],
     "correct": 0,
-    "explanation": "Fighting inside Angola carried on for years afterwards. The accords settled the regional and Cold War dimension, and you should keep that apart from the civil war. Option {opt3} is wrong: Namibia became independent in 1990.",
+    "explanation": "It led to the accords and to Namibian independence. It did not bring peace inside Angola. The internal war ran on to 2002, well past anything you will be examined on. Option {opt2} cuts the regional consequence that matters most.",
     "id": 17,
     "slot": 17,
     "section": "Cuito Cuanavale and after",
     "tier": "Apply"
   },
   {
-    "question": "What is wrong with this reasoning? 'Because the two accounts of Cuito Cuanavale conflict, neither is reliable.'",
+    "question": "What is wrong with this reasoning? 'Malan and Mandela describe Cuito Cuanavale differently, so one of them must be lying.'",
     "options": [
-      "Each is reliable evidence of the position its author held",
-      "Conflicting accounts are always equally unreliable as historical evidence",
-      "The accounts do not actually conflict in any way",
-      "Reliability depends only on when a source was first written"
+      "They agree on the fighting and disagree on what winning meant",
+      "They agree on everything, so neither account is at all useful",
+      "Only one of them was alive when the battle happened",
+      "Neither of them ever commented on the battle at all"
     ],
     "correct": 0,
-    "explanation": "A source arguing a case is still solid evidence of what that case was and who made it. You're better off saying what each one is good for than dismissing both. Option {opt1} sounds cautious and even-handed, which is exactly why it costs you.",
+    "explanation": "Two accounts can disagree without either one being false. They are measuring different things. Malan measured ground held. Mandela measured what the battle did to apartheid. You can hold both.",
     "id": 18,
     "slot": 18,
     "section": "Cuito Cuanavale and after",
@@ -994,20 +1014,9 @@ document.getElementById('prev-btn').addEventListener('click', () => {
 document.getElementById('exit-btn').addEventListener('click', () => { quiz.classList.add('hidden'); menu.classList.remove('hidden'); });
 document.getElementById('restart-btn').addEventListener('click', () => { review.classList.add('hidden'); menu.classList.remove('hidden'); });
 
-/* v2.1. Every file in a unit now ends the same way: Finish, then a pop-up whose
-   only job is to tell the learner to tap the platform's Done control. The four
-   knowledge checks previously ended on the results screen with no instruction,
-   so two files in every seven closed differently from the other five. */
-document.getElementById('finish-btn').addEventListener('click', () => {
-  const back = document.createElement('div');
-  back.className = 'pop-back';
-  back.innerHTML = '<div class="pop"><div class="pop-label">' + DONE_LABEL +
-    '</div><h3 style="margin:.4rem 0 .2rem;font-size:1.05rem;">' + DONE_TITLE +
-    '</h3><div class="pop-text">' + DONE_TEXT +
-    '</div><button class="pop-btn" id="fin-ok">Done</button></div>';
-  document.body.appendChild(back);
-  document.getElementById('fin-ok').addEventListener('click', () => back.remove());
-});
+/* The button at the end of the file is the thing that continues. It does not
+   point at a control somewhere else on the page. */
+document.getElementById('finish-btn').addEventListener('click', () => { KulaLMS.advance(); });
 
 function weakestSection(){
   let worst = SECTIONS[0], worstPct = 2;
@@ -1085,6 +1094,9 @@ function showReview(){
     rows.innerHTML += `<div class="breakdown-row"><div class="breakdown-name">${sec}</div><div class="breakdown-bar"><div class="breakdown-fill" style="width:${p}%"></div></div><div class="breakdown-score">${got}/${qs.length}</div></div>`;
   });
 
+  const closing = document.getElementById('closing-line');
+  if(CLOSING_TEXT){ closing.textContent = CLOSING_TEXT; closing.classList.remove('hidden'); }
+
   const cards = document.getElementById('review-cards'); cards.innerHTML = '';
   state.list.forEach((q, i) => {
     const your = state.answers[q.id];
@@ -1102,6 +1114,7 @@ function showReview(){
     cards.appendChild(card);
   });
   window.scrollTo({top:0,behavior:'smooth'});
+  KulaLMS.completed();
 }
 
 buildMenu();
@@ -1112,30 +1125,36 @@ buildMenu();
    Injects its own button so there is no stray markup, and lives inside the
    single script block so a first-to-last script extraction still parses. */
 (function(){
-  var NATIVE = "light";
-  try{ if(localStorage.getItem("kula-mode")==="alt"){ document.body.classList.add("alt"); } }catch(e){}
+  /* What is stored is the mode the learner chose, "light" or "dark". Never a
+     class name and never "native": neither describes anything on a unit built
+     the other way round. For an essay unit set NATIVE "dark", FLIP "light",
+     CLS "bright". Nothing else changes. */
+  var NATIVE = "light";   // the mode this unit is designed in
+  var FLIP   = "dark";    // the mode the toggle offers
+  var CLS    = "dark";    // the class that produces FLIP in this unit
+  try{ if(localStorage.getItem("kula-mode")===FLIP){ document.body.classList.add(CLS); } }catch(e){}
   var SUN='<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>';
   var MOON='<path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>';
-  var b=document.getElementById("mode-toggle");
+  var b=document.getElementById("kula-mode-toggle");
   if(!b){
     b=document.createElement("button");
-    b.className="mode-toggle"; b.id="mode-toggle"; b.type="button";
+    b.className="mode-toggle"; b.id="kula-mode-toggle"; b.type="button";
     b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" id="mode-icon"></svg><span id="mode-label"></span>';
     document.body.appendChild(b);
   }
   var lab=document.getElementById("mode-label"), ic=document.getElementById("mode-icon");
   function paint(){
-    var onAlt=document.body.classList.contains("alt");
-    var showing = onAlt ? (NATIVE==="dark" ? "light" : "dark") : NATIVE;
+    var flipped = document.body.classList.contains(CLS);
+    var showing = flipped ? FLIP : NATIVE;
     var offering = showing==="dark" ? "light" : "dark";
-    lab.textContent = offering==="light" ? "Light Mode" : "Dark Mode";
+    lab.textContent = offering==="light" ? "Light mode" : "Dark mode";
     ic.innerHTML = offering==="light" ? SUN : MOON;
-    b.setAttribute("aria-pressed", onAlt ? "true" : "false");
+    b.setAttribute("aria-pressed", showing==="dark" ? "true" : "false");
     b.setAttribute("aria-label", "Switch to " + offering + " mode");
   }
   b.addEventListener("click",function(){
-    var onAlt=document.body.classList.toggle("alt");
-    try{ localStorage.setItem("kula-mode", onAlt ? "alt" : "native"); }catch(e){}
+    var flipped=document.body.classList.toggle(CLS);
+    try{ localStorage.setItem("kula-mode", flipped ? FLIP : NATIVE); }catch(e){}
     paint();
   });
   paint();
