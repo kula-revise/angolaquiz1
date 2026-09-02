@@ -272,13 +272,13 @@ body.dark .option-btn, body.dark .opt-btn { border-color: rgba(242,237,248,0.20)
 
 /* Answer states: dark grounds with a coloured edge, text stays --ink. */
 body.dark .option-btn.correct {
-  background: rgba(61,220,242,0.16) !important;
-  border-color: #3DDCF2 !important;
+  background: rgba(74,222,128,0.34);
+  border-color: #4ADE80;
   color: var(--ink) !important;
 }
 body.dark .option-btn.wrong {
-  background: rgba(255,110,207,0.16) !important;
-  border-color: #FF6ECF !important;
+  background: rgba(255,107,107,0.36);
+  border-color: #FF8787;
   color: var(--ink) !important;
 }
 body.dark .option-btn.correct .opt-text,
@@ -318,13 +318,13 @@ body.dark .quiz-foot a, body.dark .quiz-foot { color: var(--clay) !important; }
 body.dark .option { background: var(--cut) !important; border-color: rgba(242,237,248,0.18) !important; color: var(--ink) !important; }
 body.dark .option.selected { background: rgba(255,110,207,0.14) !important; border-color: #FF6ECF !important; }
 body.dark .option.correct {
-  background: rgba(61,220,242,0.16) !important;
-  border-color: #3DDCF2 !important;
+  background: rgba(74,222,128,0.34);
+  border-color: #4ADE80;
   color: var(--ink) !important;
 }
 body.dark .option.wrong {
-  background: rgba(255,110,207,0.16) !important;
-  border-color: #FF6ECF !important;
+  background: rgba(255,107,107,0.36);
+  border-color: #FF8787;
   color: var(--ink) !important;
 }
 body.dark .option.correct .opt-text,
@@ -432,8 +432,8 @@ body.dark .figure img { filter: brightness(0.9) contrast(1.02); }
   .option-btn:hover:not(:disabled) { background: var(--cut); border-color: var(--a1); }
   .option-btn:disabled { cursor: default; }
   .option-btn.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option-btn.correct { background: var(--ok-bg); border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option-btn.wrong { background: var(--no-bg); border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option-btn.correct { background: rgba(34,197,94,0.30); border-color: #15803D; border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option-btn.wrong { background: rgba(239,68,68,0.28); border-color: #DC2626; border-width: 2px; padding: 0.94rem 0.99rem; }
   /* The dimmed state fell below readable contrast at 360px. One rule per mode,
      and nothing later in the file competes with it. */
   .option.dimmed, .option-btn.dimmed { opacity: 0.82; }
@@ -525,7 +525,7 @@ body.dark { --ok: #93D98A; --ok-rgb: 147,217,138; --on-ok: #0E0A13; }
 
 .option.correct, .option-btn.correct,
 body.dark .option.correct, body.dark .option-btn.correct {
-  background: var(--ok) !important;
+  background: rgba(74,222,128,0.34);
   border: 2px solid var(--ok) !important;
   box-shadow: 5px 5px 0 rgba(var(--ok-rgb),0.30) !important;
   color: var(--on-ok) !important;
@@ -541,7 +541,7 @@ body.dark .option.correct .opt-mark, body.dark .option-btn.correct .opt-mark {
 .option.correct .opt-letter, .option-btn.correct .opt-letter { opacity: 0.85; }
 
 .option.wrong, .option-btn.wrong {
-  background: var(--no-bg) !important;
+  background: rgba(239,68,68,0.28);
   border: 2px solid var(--a1) !important;
   box-shadow: none !important;
 }
@@ -670,6 +670,35 @@ body.dark .inter-item.ok span, body.dark .inter-item.ok .rank { color: var(--on-
 .quiz-eyebrow { padding-right: 3.4rem; }
 @media (min-width: 521px) { .quiz-eyebrow { padding-right: 9.5rem; } }
 
+
+/* The answer fills carry the meaning, so the words on top of them have to stay
+   legible on both fills in both modes. Before this, correct-option text kept a
+   near-white colour that sat on a light green fill at 1.22 to 1. The hue lives
+   in the fill and the border; the text is plain ink. */
+.option.correct .opt-text,
+.option-btn.correct .opt-text,
+.option.correct .opt-letter,
+.option-btn.correct .opt-letter,
+.option.correct .opt-mark,
+.option-btn.correct .opt-mark,
+.option.wrong .opt-text,
+.option-btn.wrong .opt-text,
+.option.wrong .opt-letter,
+.option-btn.wrong .opt-letter,
+.option.wrong .opt-mark,
+.option-btn.wrong .opt-mark { color: #101418 !important; opacity: 1 !important; }
+body.dark .option.correct .opt-text,
+body.dark .option-btn.correct .opt-text,
+body.dark .option.correct .opt-letter,
+body.dark .option-btn.correct .opt-letter,
+body.dark .option.correct .opt-mark,
+body.dark .option-btn.correct .opt-mark,
+body.dark .option.wrong .opt-text,
+body.dark .option-btn.wrong .opt-text,
+body.dark .option.wrong .opt-letter,
+body.dark .option-btn.wrong .opt-letter,
+body.dark .option.wrong .opt-mark,
+body.dark .option-btn.wrong .opt-mark { color: #F2F5F8 !important; opacity: 1 !important; }
 </style>
 </head>
 <body class="dark">
@@ -824,7 +853,7 @@ const QUESTIONS = [
       "It had no settlers or economic interest left in the territories"
     ],
     "correct": 0,
-    "explanation": "Portugal treated Angola as part of Portugal, not as a possession abroad. So leaving was never on the table. Option {opt3} turns the reason round. Settlers and trade are why Lisbon stayed, not why it left.",
+    "explanation": "Portugal treated Angola as part of Portugal, not as a possession abroad. So leaving was never considered. Option {opt3} turns the reason round. Settlers and trade are why Lisbon stayed, not why it left.",
     "id": 3,
     "slot": 3,
     "section": "Portugal holds on",
